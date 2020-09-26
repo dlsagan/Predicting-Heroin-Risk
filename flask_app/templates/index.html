@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+	
+    <title>Heroin User or Not</title>
+
+</head>
+
+<body align="center">
+
+
+    <h1>Predicting Likelihood of Heroin Use</h1>
+    <p>The following assessment is meant to help those who are personally struggling with <br> drug use/abuse
+    or have a loved one they are concerned about predict <br> the likelihood of heroin use in the future for the
+    user. <br> <br>
+    Please follow this <a href="https://sapa-project.org/survey/start.php" target="_blank">link</a> to take a
+    personality test brought to you <br> for free by the SAPA project. Please complete the test enough to get <br>
+    accurate scores for your "Big 5" personality traits. <br> <br>
+    Upon completing the test, please follow this
+    <a href="http://expfactory.org/experiments/sensation_seeking_survey/preview" target="_blank">link</a> to
+    take another personality test. <br> This test scores Sensation Seeking behavior, and is brought to you <br>
+    for free by EXPFactory. In order to get your score for this test, <br> please download the JSON file and
+    sum the score of your responses.
+    </p>
+
+  <h2>Please enter your behavorial survey scores and respond to all other questions with yes or no</h2>
+
+  <form action="/predict_user_or_not/" method="post">
+
+    <div class="variable-return" align="center">
+
+      Are you between 18 and 24 years old?:
+      <br>
+        <input type="text" name="age_18-24">
+      <br>
+
+      Are you between 25 and 34 years old?:
+      <br>
+        <input type="text" name="age_25-34">
+      <br>
+
+      Are you older than 35?:
+      <br>
+        <input type="text" name="age_35+">
+      <br>
+
+      Are you male?:
+      <br>
+        <input type="text" name="sex_M">
+      <br>
+
+      Do you live in the USA?:
+      <br>
+        <input type="text" name="country_USA">
+      <br>
+
+      Do you live in the UK?:
+      <br>
+        <input type="text" name="country_UK">
+      <br>
+
+      Did you drop out of High School?:
+      <br>
+        <input type="text" name="no_college">
+      <br>
+      
+      Did you attend some college/trade school but not graduate?:
+      <br>
+        <input type="text" name="some_college">
+      <br>
+
+      Did you graduate college/trade school?:
+      <br>
+        <input type="text" name="finished_college">
+      <br>
+
+      Do you have a Masters and/or Doctorate degree?:
+      <br>
+        <input type="text" name="higher_ed">
+      <br>
+
+      <hr>
+
+      Agreeableness Score (10-90):
+      <br>
+        <input type="text" name="a_score">
+      <br>
+      
+      Conscientiousness Score (10-90):
+      <br>
+        <input type="text" name="c_score">
+      <br>
+
+      Extraversion Score (10-90):
+      <br>
+        <input type="text" name="e_score">
+      <br>
+      
+      Neuroticism Score (10-90):
+      <br>
+      	<input type="text" name="n_score">
+      <br>
+
+      Openness to Experience Score (10-90):
+      <br>
+        <input type="text" name="o_score">
+      <br>
+
+      Sensation Seeking Score (0-40):
+      <br>
+        <input type="text" name="s_score">
+      <br>
+    
+      <hr>
+
+      Have you had alcohol in any form in the last month?:
+      <br>
+        <input type="text" name="alcohol">
+      <br>
+
+      Have you had THC (Weed, Wax, Edibles) in any form in the last month?:
+      <br>
+        <input type="text" name="cannabis">
+      <br>
+
+      Have you used any Benzos (Xanax) in the last month?:
+      <br>
+        <input type="text" name="benzos">
+      <br>
+
+      Have you used any amphetamines (Adderal) in the last month?:
+      <br>
+        <input type="text" name="amphet">
+      <br>
+
+      Have you had nicotine (Juul) in any form in the last month?:
+      <br>
+        <input type="text" name="nicotine">
+      <br>
+
+      Have you used any ecstacy (Molly) in the last month?:
+      <br>
+        <input type="text" name="ecstacy">
+      <br>
+
+      Have you used any LSD (Acid) in the last month?:
+      <br>
+        <input type="text" name="acid">
+      <br>
+
+      Have you used any cocaine in the last month?:
+      <br>
+        <input type="text" name="coke">
+      <br>
+
+      Have you used any mushrooms in the last month?:
+      <br>
+        <input type="text" name="mushrooms">
+      <br>
+
+      Have you used any amyl nitrates (poppers) in the last month?:
+      <br>
+        <input type="text" name="amyl">
+      <br>
+
+      Have you used any legal highs (inhalants) in the last month?:
+      <br>
+        <input type="text" name="inhalants">
+      <br>
+
+      Have you used any ketamine in the last month?:
+      <br>
+        <input type="text" name="ketamine">
+      <br>
+
+      <hr>
+
+    </div>
+
+  <br>
+
+  <button type="submit" class="button">
+    Are you at risk?
+  </button>
+  </form>
+
+  <br>
+
+  {% if message %}
+  <h2>{{message}}</h2>
+  {% endif %}
+
+</body>
+</html>
